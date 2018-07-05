@@ -17,7 +17,8 @@
         android:layout_marginLeft="13dp"
         android:layout_marginStart="13dp"
         android:layout_toEndOf="@+id/imas"
-        android:layout_toRightOf="@+id/imas" />
+        android:layout_toRightOf="@+id/imas"
+        android:gravity="center_vertical|center_horizontal" />
 
 
 </RelativeLayout>

@@ -13,24 +13,6 @@ public class Message {
     @Expose
     private Body body;
 
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public Message() {
-    }
-
-    /**
-     * 
-     * @param body
-     * @param header
-     */
-    public Message(Header header, Body body) {
-        super();
-        this.header = header;
-        this.body = body;
-    }
-
     public Header getHeader() {
         return header;
     }

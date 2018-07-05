@@ -35,9 +35,9 @@ public class SongActivity extends AppCompatActivity {
         final String artist = getIntent().getStringExtra("artist")     ;
         final String poster = getIntent().getStringExtra("poster")     ;
         final String album = getIntent().getStringExtra("album")     ;
-        final String genreList = getIntent().getStringExtra("genresList")     ;
+        final String genreList = getIntent().getStringExtra("genreList")     ;
         final String yore = getIntent().getStringExtra("yore")     ;
-        String id = getIntent().getStringExtra("id")     ;
+        final String id = getIntent().getStringExtra("id")     ;
         ApiInterface apiService =
                 ApiClient.getClient().create(ApiInterface.class);
         Call<Lyrik> call= apiService.getTrackLyrics(id,API_KEY);
@@ -53,8 +53,9 @@ public class SongActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Lyrik> call, Throwable t) {
                 Log.d(TAG, "onFailure: failed lyrikc");
-
+                setscreen(title,artist,poster,album,genreList,yore,"");
             }
+
         });
 
     }
@@ -74,7 +75,7 @@ public class SongActivity extends AppCompatActivity {
         t2.setText("Artist : "+artist);
         t3.setText("Album : "+album);
         t4.setText("Genre : "+genreList);
-        t5.setText("Release :"+yore);
+        t5.setText("Release :"+yore.substring(0,10));
         t6.setText(Lyricss);
         t6.setMovementMethod(new ScrollingMovementMethod());
 

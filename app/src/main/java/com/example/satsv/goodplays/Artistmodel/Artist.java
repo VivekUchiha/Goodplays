@@ -63,56 +63,6 @@ public class Artist {
     @Expose
     private String updatedTime;
 
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public Artist() {
-    }
-
-    /**
-     * 
-     * @param artistComment
-     * @param artistCountry
-     * @param artistMbid
-     * @param restricted
-     * @param artistVanityId
-     * @param artistNameTranslationList
-     * @param artistShareUrl
-     * @param artistEditUrl
-     * @param secondaryGenres
-     * @param managed
-     * @param artistId
-     * @param artistCredits
-     * @param artistRating
-     * @param primaryGenres
-     * @param artistName
-     * @param artistAliasList
-     * @param updatedTime
-     * @param artistTwitterUrl
-     */
-    public Artist(int artistId, String artistMbid, String artistName, List<Object> artistNameTranslationList, String artistComment, String artistCountry, List<ArtistAliasList> artistAliasList, int artistRating, PrimaryGenres primaryGenres, SecondaryGenres secondaryGenres, String artistTwitterUrl, String artistVanityId, String artistEditUrl, String artistShareUrl, ArtistCredits artistCredits, int restricted, int managed, String updatedTime) {
-        super();
-        this.artistId = artistId;
-        this.artistMbid = artistMbid;
-        this.artistName = artistName;
-        this.artistNameTranslationList = artistNameTranslationList;
-        this.artistComment = artistComment;
-        this.artistCountry = artistCountry;
-        this.artistAliasList = artistAliasList;
-        this.artistRating = artistRating;
-        this.primaryGenres = primaryGenres;
-        this.secondaryGenres = secondaryGenres;
-        this.artistTwitterUrl = artistTwitterUrl;
-        this.artistVanityId = artistVanityId;
-        this.artistEditUrl = artistEditUrl;
-        this.artistShareUrl = artistShareUrl;
-        this.artistCredits = artistCredits;
-        this.restricted = restricted;
-        this.managed = managed;
-        this.updatedTime = updatedTime;
-    }
-
     public int getArtistId() {
         return artistId;
     }

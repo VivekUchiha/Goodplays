@@ -13,24 +13,6 @@ public class Header {
     @Expose
     private float executeTime;
 
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public Header() {
-    }
-
-    /**
-     * 
-     * @param statusCode
-     * @param executeTime
-     */
-    public Header(int statusCode, float executeTime) {
-        super();
-        this.statusCode = statusCode;
-        this.executeTime = executeTime;
-    }
-
     public int getStatusCode() {
         return statusCode;
     }

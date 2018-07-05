@@ -10,22 +10,6 @@ public class ArtistList {
     @Expose
     private Artist artist;
 
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public ArtistList() {
-    }
-
-    /**
-     * 
-     * @param artist
-     */
-    public ArtistList(Artist artist) {
-        super();
-        this.artist = artist;
-    }
-
     public Artist getArtist() {
         return artist;
     }

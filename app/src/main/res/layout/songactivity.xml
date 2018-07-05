@@ -1,48 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#f54f6d">
 
     <ImageView
         android:id="@+id/pik"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="15dp"
-        android:gravity="center_vertical|center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp"
         app:srcCompat="@drawable/album" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:gravity="center_vertical|center_horizontal"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="233dp"
+        android:layout_centerVertical="true"
+        android:gravity="center_vertical|center_horizontal"
         android:text="" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView2"
+        android:layout_marginBottom="214dp"
         android:gravity="center_vertical|center_horizontal"
-        android:layout_marginTop="-219dp"
         android:text="" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical|center_horizontal"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="170dp"
+        android:layout_marginBottom="183dp"
+        android:gravity="center_vertical|center_horizontal"
         android:text="" />
 
     <TextView
@@ -50,9 +48,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="center_vertical|center_horizontal"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="138dp"
+        android:layout_marginBottom="152dp"
+        android:gravity="center_vertical|center_horizontal"
         android:text="" />
 
     <TextView
@@ -61,18 +59,18 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="108dp"
+        android:layout_marginBottom="122dp"
         android:gravity="center_vertical|center_horizontal"
         android:text="" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="match_parent"
-        android:layout_height="98dp"
+        android:layout_height="111dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:gravity="center_vertical|center_horizontal"
         android:layout_marginBottom="0dp"
+        android:gravity="center_vertical|center_horizontal"
         android:maxLines="1000"
         android:scrollbars="vertical"
         android:text="No Lyrics" />

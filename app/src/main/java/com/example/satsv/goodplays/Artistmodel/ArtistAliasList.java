@@ -10,22 +10,6 @@ public class ArtistAliasList {
     @Expose
     private String artistAlias;
 
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public ArtistAliasList() {
-    }
-
-    /**
-     * 
-     * @param artistAlias
-     */
-    public ArtistAliasList(String artistAlias) {
-        super();
-        this.artistAlias = artistAlias;
-    }
-
     public String getArtistAlias() {
         return artistAlias;
     }

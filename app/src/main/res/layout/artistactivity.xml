@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#562b5725">
+    android:background="#560c059a">
 
     <TextView
         android:id="@+id/name"
@@ -11,19 +11,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp"
-        android:text="TextView"
-        android:textSize="36sp" />
+        android:layout_marginTop="63dp"
+        android:text="TextView" />
 
     <TextView
-        android:id="@+id/age"
+        android:id="@+id/alias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="144dp"
-        android:text="TextView"
-        android:textSize="36sp" />
+        android:layout_marginTop="140dp"
+        android:text="TextView" />
 
     <TextView
         android:id="@+id/genres"
@@ -31,9 +29,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="215dp"
-        android:text="TextView"
-        android:textSize="36sp" />
+        android:layout_marginTop="222dp"
+        android:text="TextView" />
 
     <TextView
         android:id="@+id/rating"
@@ -42,6 +39,15 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="174dp"
-        android:text="TextView"
-        android:textSize="36sp" />
+        android:gravity="center_horizontal"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/twitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="97dp"
+        android:text="TextView" />
 </RelativeLayout>

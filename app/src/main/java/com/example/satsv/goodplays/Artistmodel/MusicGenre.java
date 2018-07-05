@@ -22,30 +22,6 @@ public class MusicGenre {
     @Expose
     private String musicGenreVanity;
 
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public MusicGenre() {
-    }
-
-    /**
-     * 
-     * @param musicGenreName
-     * @param musicGenreId
-     * @param musicGenreNameExtended
-     * @param musicGenreVanity
-     * @param musicGenreParentId
-     */
-    public MusicGenre(int musicGenreId, int musicGenreParentId, String musicGenreName, String musicGenreNameExtended, String musicGenreVanity) {
-        super();
-        this.musicGenreId = musicGenreId;
-        this.musicGenreParentId = musicGenreParentId;
-        this.musicGenreName = musicGenreName;
-        this.musicGenreNameExtended = musicGenreNameExtended;
-        this.musicGenreVanity = musicGenreVanity;
-    }
-
     public int getMusicGenreId() {
         return musicGenreId;
     }

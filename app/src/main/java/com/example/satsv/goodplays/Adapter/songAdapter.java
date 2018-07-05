@@ -3,6 +3,7 @@ package com.example.satsv.goodplays.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 public class songAdapter extends RecyclerView.Adapter<songAdapter.songViewHolder> {
-
+    private final String TAG = songAdapter.class.getSimpleName();
     private List<TrackList> songs;
     private int rowLayout;
     private Context context;
@@ -63,6 +64,8 @@ public class songAdapter extends RecyclerView.Adapter<songAdapter.songViewHolder
 
 
                                                          Intent intent = new Intent(context, SongActivity.class);
+                                                         String test = Integer.toString(songs.get(position).getTrack().getTrackId());
+                                                         Log.d(TAG, test);
                                                          intent.putExtra("title",songs.get(position).getTrack().getTrackName());
                                                          intent.putExtra("artist",songs.get(position).getTrack().getArtistName());
                                                          intent.putExtra("poster",songs.get(position).getTrack().getAlbumCoverart100x100());
@@ -71,7 +74,7 @@ public class songAdapter extends RecyclerView.Adapter<songAdapter.songViewHolder
                                                          intent.putExtra("genreList",songs.get(position).getTrack().getPrimaryGenres().getMusicGenreList().get(0).getMusicGenre().getMusicGenreName());
                                                          else intent.putExtra("genreList","NA");
                                                          intent.putExtra("yore",songs.get(position).getTrack().getFirstReleaseDate());
-                                                         intent.putExtra("id",songs.get(position).getTrack().getTrackName());
+                                                         intent.putExtra("id",Integer.toString(songs.get(position).getTrack().getTrackId()));
                                                          intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                                          context.startActivity(intent);
 

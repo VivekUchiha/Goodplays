@@ -10,22 +10,6 @@ public class MusicGenreList {
     @Expose
     private MusicGenre musicGenre;
 
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public MusicGenreList() {
-    }
-
-    /**
-     * 
-     * @param musicGenre
-     */
-    public MusicGenreList(MusicGenre musicGenre) {
-        super();
-        this.musicGenre = musicGenre;
-    }
-
     public MusicGenre getMusicGenre() {
         return musicGenre;
     }
