@@ -1,5 +1,6 @@
 package com.example.satsv.goodplays.Activity;
 
+import android.arch.persistence.room.Room;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +15,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.satsv.goodplays.Adapter.songAdapter;
+import com.example.satsv.goodplays.Adapter.songFavAdapter;
 import com.example.satsv.goodplays.Model.SongList;
 import com.example.satsv.goodplays.Model.TrackList;
 import com.example.satsv.goodplays.R;
 import com.example.satsv.goodplays.Rest.ApiClient;
 import com.example.satsv.goodplays.Rest.ApiInterface;
+import com.example.satsv.goodplays.db.Appdatabase;
+import com.example.satsv.goodplays.db.songdb;
 
 import java.util.List;
 
@@ -62,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         FloatingActionButton fab1= (FloatingActionButton)findViewById(R.id.floatingActionButton2);
         FloatingActionButton fab2= (FloatingActionButton)findViewById(R.id.floatingActionButton4);
+        FloatingActionButton fab3= (FloatingActionButton)findViewById(R.id.floatingActionButton5);
 
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,6 +110,19 @@ public class MainActivity extends AppCompatActivity {
                 getApplicationContext().startActivity(intent);
             }
         });
+
+        fab3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Appdatabase db = Room.databaseBuilder(getApplicationContext(),
+                        Appdatabase.class, "mydb").allowMainThreadQueries().build();
+                List<songdb> SONG = db.Songdbdao().getAll();
+                recyclerView.setAdapter(new songFavAdapter(SONG, R.layout.song,getApplicationContext()));
+
+            }
+        });
+
+
 
 
                                             }

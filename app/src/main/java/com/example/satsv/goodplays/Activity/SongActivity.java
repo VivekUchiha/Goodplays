@@ -1,17 +1,27 @@
 package com.example.satsv.goodplays.Activity;
 
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.Room;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.satsv.goodplays.R;
 import com.example.satsv.goodplays.Rest.ApiClient;
 import com.example.satsv.goodplays.Rest.ApiInterface;
+import com.example.satsv.goodplays.db.Appdatabase;
+import com.example.satsv.goodplays.db.songdb;
 import com.example.satsv.goodplays.lyricmodel.Lyrik;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,6 +37,7 @@ public class SongActivity extends AppCompatActivity {
         setContentView(R.layout.songactivity);
         //title, artist, poster, album, genresList,yore,id.
         getIntentData();
+
 
     }
 
@@ -46,15 +57,70 @@ public class SongActivity extends AppCompatActivity {
             public void onResponse(Call<Lyrik> call, Response<Lyrik> response) {
                 Log.d(TAG, "onResponse: got lyrik");
                 int statusCode = response.code();
-                String Lyricss=response.body().getMessage().getBody().getLyrics().getLyricsBody();
+                final String Lyricss=response.body().getMessage().getBody().getLyrics().getLyricsBody();
                 setscreen(title,artist,poster,album,genreList,yore,Lyricss);
-                }
+                ImageButton imageButton=(ImageButton)findViewById(R.id.imageButtonsong);
+                imageButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Appdatabase db = Room.databaseBuilder(getApplicationContext(),
+                                Appdatabase.class, "mydb").allowMainThreadQueries().build();
+                        songdb Songdb = new songdb(id,title,artist,genreList,yore,album,Lyricss);
+                        List<songdb> son = db.Songdbdao().getAll();
+                        int f=0;
+                        for (int i=0;i<son.size();i++)
+                        {if(son.get(i).getSongid().equals(Songdb.getSongid()))
+                            {Toast.makeText(getApplicationContext(), "Already stored",
+                                        Toast.LENGTH_LONG).show();
+                            f=1;
+                            break;}
+                            }
+                            if(f==0)
+                            { db.Songdbdao().insertsong(Songdb);
+                                Toast.makeText(getApplicationContext(), "Added to Favourites",
+                                        Toast.LENGTH_LONG).show();}
+
+                    }
+                });
+                ImageButton imageButtondel=(ImageButton)findViewById(R.id.imageButtonsongdelete);
+                imageButtondel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Appdatabase db = Room.databaseBuilder(getApplicationContext(),
+                                Appdatabase.class, "mydb").allowMainThreadQueries().build();
+                        songdb Songdb = new songdb(id,title,artist,genreList,yore,album,Lyricss);
+                        List<songdb> son = db.Songdbdao().getAll();
+                        int flag=0;
+                        for (int i=0;i<son.size();i++) {
+                            if (son.get(i).getSongid().equals( Songdb.getSongid())) {
+                                flag = 1;
+                                break;
+                            }
+
+                        }
+
+                        if(flag==1){
+                                db.Songdbdao().delete(Songdb);
+                            Toast.makeText(getApplicationContext(), "Deleted",
+                                    Toast.LENGTH_LONG).show();}
+
+
+                        else Toast.makeText(getApplicationContext(), "Not in Favourites",
+                                Toast.LENGTH_LONG).show();
+
+
+
+                    }
+                });
+
+            }
 
             @Override
             public void onFailure(Call<Lyrik> call, Throwable t) {
                 Log.d(TAG, "onFailure: failed lyrikc");
                 setscreen(title,artist,poster,album,genreList,yore,"");
             }
+
 
         });
 
@@ -81,6 +147,13 @@ public class SongActivity extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    public void onBackPressed()
+    {
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        getApplicationContext().startActivity(intent);
     }
 
 

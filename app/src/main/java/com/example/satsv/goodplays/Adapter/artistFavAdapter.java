@@ -13,12 +13,13 @@ import android.widget.TextView;
 import com.example.satsv.goodplays.Activity.ArtistActivity;
 import com.example.satsv.goodplays.Artistmodel.ArtistList;
 import com.example.satsv.goodplays.R;
+import com.example.satsv.goodplays.db.artistdb;
 
 import java.util.List;
 
-public class artistAdapter extends RecyclerView.Adapter<artistAdapter.artistViewHolder> {
+public class artistFavAdapter extends RecyclerView.Adapter<artistFavAdapter.artistViewHolder> {
     private final String TAG = songAdapter.class.getSimpleName();
-    private List<ArtistList> artists;
+    private List<artistdb> artists;
     private int rowLayout;
     private Context context;
 
@@ -35,15 +36,15 @@ public class artistAdapter extends RecyclerView.Adapter<artistAdapter.artistView
         }
     }
 
-    public artistAdapter(List<ArtistList> artists, int rowLayout, Context context) {
+    public artistFavAdapter(List<artistdb> artists, int rowLayout, Context context) {
         this.artists = artists;
         this.rowLayout = rowLayout;
         this.context = context;
     }
 
     @Override
-    public artistAdapter.artistViewHolder onCreateViewHolder(ViewGroup parent,
-                                                         int viewType) {
+    public artistFavAdapter.artistViewHolder onCreateViewHolder(ViewGroup parent,
+                                                             int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
         return new artistViewHolder(view);
     }
@@ -51,7 +52,7 @@ public class artistAdapter extends RecyclerView.Adapter<artistAdapter.artistView
     public void onBindViewHolder(artistViewHolder holder, final int position) {
 
 
-        holder.name.setText(artists.get(position).getArtist().getArtistName());
+        holder.name.setText(artists.get(position).getName());
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
                                                      // title, artist, poster, album, genresList,yore,id.
                                                      @Override
@@ -59,18 +60,14 @@ public class artistAdapter extends RecyclerView.Adapter<artistAdapter.artistView
 //name, age, genres, and rating.
 
                                                          Intent intent = new Intent(context, ArtistActivity.class);
-                                                         String test = (artists.get(position).getArtist().getArtistName());
+                                                         String test = (artists.get(position).getName());
                                                          Log.d(TAG, test);
-                                                         intent.putExtra("name",artists.get(position).getArtist().getArtistName());
-                                                         intent.putExtra("id",Integer.toString(artists.get(position).getArtist().getArtistId()));
-                                                         intent.putExtra("twitter",artists.get(position).getArtist().getArtistTwitterUrl());
-                                                         if(artists.get(position).getArtist().getPrimaryGenres().getMusicGenreList().size()!=0)
-                                                         intent.putExtra("genres",artists.get(position).getArtist().getPrimaryGenres().getMusicGenreList().get(0).getMusicGenre().getMusicGenreName());
-                                                         else intent.putExtra("genres","NA");
-                                                         intent.putExtra("rating",Integer.toString(artists.get(position).getArtist().getArtistRating()));
-                                                         if(artists.get(position).getArtist().getArtistAliasList().size()!=0)
-                                                         intent.putExtra("alias",artists.get(position).getArtist().getArtistAliasList().get(0).getArtistAlias());
-                                                         else intent.putExtra("alias","NA");
+                                                         intent.putExtra("id",artists.get(position).getId());
+                                                         intent.putExtra("name",artists.get(position).getName());
+                                                         intent.putExtra("twitter",artists.get(position).getTwitter());
+                                                         intent.putExtra("genres",artists.get(position).getGenres());
+                                                         intent.putExtra("rating",(artists.get(position).getRating()));
+                                                         intent.putExtra("alias",artists.get(position).getAlias());
                                                          intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                                          context.startActivity(intent);
 
@@ -85,3 +82,4 @@ public class artistAdapter extends RecyclerView.Adapter<artistAdapter.artistView
     }
 
 }
+

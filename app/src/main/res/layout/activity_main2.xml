@@ -13,6 +13,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:text="Top Artists"
+        android:layout_marginBottom="5dp"
+        android:textStyle="bold"
         android:textSize="30sp"/>
 
     <android.support.v7.widget.RecyclerView
@@ -46,7 +48,7 @@
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/b1"
-        android:layout_marginBottom="147dp">
+        android:layout_marginBottom="168dp">
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/floatingActionButton3"
@@ -57,6 +59,24 @@
             android:clickable="true"
             android:focusable="true"
             android:src="@drawable/ic_round_music_note_24px" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/b1"
+        android:layout_marginBottom="95dp">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/floatingActionButton7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@android:drawable/ic_menu_save" />
     </FrameLayout>
 
 

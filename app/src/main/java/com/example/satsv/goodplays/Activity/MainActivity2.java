@@ -1,5 +1,6 @@
 package com.example.satsv.goodplays.Activity;
 
+import android.arch.persistence.room.Room;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +15,17 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.satsv.goodplays.Adapter.artistAdapter;
+import com.example.satsv.goodplays.Adapter.artistFavAdapter;
+import com.example.satsv.goodplays.Adapter.songFavAdapter;
 import com.example.satsv.goodplays.Artistmodel.ArtistList;
 import com.example.satsv.goodplays.Artistmodel.ArtistSList;
 import com.example.satsv.goodplays.R;
 import com.example.satsv.goodplays.Rest.ApiClient;
 import com.example.satsv.goodplays.Rest.ApiInterface;
+import com.example.satsv.goodplays.db.Appdatabase;
+import com.example.satsv.goodplays.db.Appdatabaseartist;
+import com.example.satsv.goodplays.db.artistdb;
+import com.example.satsv.goodplays.db.songdb;
 
 import java.util.List;
 
@@ -63,13 +70,15 @@ public class MainActivity2 extends AppCompatActivity {
 
         FloatingActionButton fab1= (FloatingActionButton)findViewById(R.id.floatingActionButton1);
         FloatingActionButton fab2= (FloatingActionButton)findViewById(R.id.floatingActionButton3);
+        FloatingActionButton fab3= (FloatingActionButton)findViewById(R.id.floatingActionButton7);
+
 
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final EditText taskEditText = new EditText(MainActivity2.this);
                 AlertDialog dialog = new AlertDialog.Builder(MainActivity2.this)
-                        .setTitle("Search for a Artist")
+                        .setTitle("Search for an Artist")
                         .setView(taskEditText)
                         .setPositiveButton("Search", new DialogInterface.OnClickListener() {
                             @Override
@@ -104,6 +113,16 @@ public class MainActivity2 extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getApplicationContext().startActivity(intent);
+            }
+        });
+        fab3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Appdatabaseartist db1 = Room.databaseBuilder(getApplicationContext(),
+                        Appdatabaseartist.class, "mydb1").allowMainThreadQueries().build();
+                List<artistdb> ARTIST = db1.Artistdbdao().getAll();
+                recyclerView.setAdapter(new artistFavAdapter(ARTIST, R.layout.artist,getApplicationContext()));
+
             }
         });
 
